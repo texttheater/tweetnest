@@ -124,6 +124,8 @@
                 $params['max_id']   = $maxID;
             }
 
+            $params['tweet_mode'] = 'extended';
+
             $data = $twitterApi->query('statuses/user_timeline', $params);
 			// Drop out on connection error
 			if(is_array($data) && $data[0] === false){ dieout(l(bad("Error: " . $data[1] . "/" . $data[2]))); }
