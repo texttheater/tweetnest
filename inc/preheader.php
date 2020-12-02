@@ -29,7 +29,7 @@
 	// Get the full path
 	$fPath = explode(DIRECTORY_SEPARATOR, rtrim(__FILE__, DIRECTORY_SEPARATOR));
 	array_pop($fPath); array_pop($fPath); // Remove inc/preheader.php
-	$fPath = implode($fPath, '/');
+	$fPath = implode('/', $fPath);
 	define('FULL_PATH', $fPath);
 	
 	// SmartyPants
