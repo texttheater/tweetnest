@@ -38,7 +38,7 @@
 	// DB
 	require 'class.db.php';
 	$db = new DB('mysql', $config['db']);
-	if(!$delayedDB){ unset($config['db']['password']); }
+	if(!isset($delayedDB) or !$delayedDB){ unset($config['db']['password']); }
 	
 	// Twitter API class
 	require 'class.twitterapi.php';
