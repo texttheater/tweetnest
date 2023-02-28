@@ -16,7 +16,7 @@
 		}
 	}
 	
-	$sort = $_COOKIE['tweet_sort_order'] == "time" ? "time" : "relevance"; // Sorting by time or default order (relevance)
+	$sort = ($_COOKIE['tweet_sort_order'] ?? null) == "time" ? "time" : "relevance"; // Sorting by time or default order (relevance)
 	
 	$tooShort = (strlen($_GET['q']) < $search->minWordLength || $search->minWordLength > 1 && strlen(trim($_GET['q'], "*")) <= 1);
 
