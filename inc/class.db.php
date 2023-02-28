@@ -35,7 +35,9 @@
 						$this->on   = true;
 
                         // Detecting port (MySQLi constructor requires this separately from the hostname)
-                        list($host, $port) = explode(':', $this->config['hostname']);
+                        $exploded = explode(':', $this->config['hostname']);
+                        $host = $exploded[0];
+                        $port = count($exploded) > 1 ? $exploded[1] : '';
                         if(!$port){
                             $port = $this->mysqli ? ini_get('mysqli.default_port') : ini_get('mysql.default_port');
                             if(!$port){
