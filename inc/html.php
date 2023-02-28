@@ -126,7 +126,7 @@
 		
 		// Entities
 		$htmlcontent = s(stupefyRaw($rt ? $twitterApi->entityDecode($retweet['text']) : $tweet['text']), ENT_NOQUOTES);
-		$entities    = ($rt ? $tweetextra['rt']['extra']['entities'] : $tweetextra['entities']);
+		$entities    = ($rt ? ($tweetextra['rt']['extra']['entities'] ?? null) : ($tweetextra['entities']) ?? null);
 		
 		if(areEntitiesEmpty($entities)){
 			$htmlcontent = linkifyTweet($htmlcontent);
@@ -169,7 +169,7 @@
 	
 	function tweetsHTML($q, $mode = "", $tabs = 4){
 		global $db, $home, $config;
-		$maxTweets = 200;
+		$maxTweets = 2000;
 		$s         = "";
 		$t         = str_repeat("\t", $tabs);
 		$path      = s(rtrim($config['path'], "/"));

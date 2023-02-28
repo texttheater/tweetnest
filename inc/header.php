@@ -4,7 +4,7 @@
 	
 	header("Content-Type: text/html; charset=utf-8");
 	$path = s(rtrim($config['path'], "/"));
-	$headTitle = "Tweets by @" . s($config['twitter_screenname']) . ($pageTitle ? " / " . p(s($pageTitle), 3) : "");
+	$headTitle = "Tweets by @" . s($config['twitter_screenname']) . (($pageTitle ?? null) ? " / " . p(s($pageTitle), 3) : "");
 	$styleFile = (substr($config['css'], 0, 7) == "http://" || substr($config['css'], 0, 8) == "https://") ? $config['css'] : $path . "/" . ltrim($config['css'], "/");
 	unset($config['twitter_password'], $config['db']['password']); // Some sort of security
 ?>
@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		<div id="content">
-			<h1><?php echo $pageHeader ? p(s($pageHeader, ENT_NOQUOTES), 3, true) : p(s($pageTitle, ENT_NOQUOTES), 3, true); ?></h1>
+			<h1><?php echo ($pageHeader ?? null) ? p(s($pageHeader, ENT_NOQUOTES), 3, true) : p(s($pageTitle, ENT_NOQUOTES), 3, true); ?></h1>
 			<form id="search" action="<?php echo $path; ?>/search" method="get"><div><input type="text" name="q" value="<?php if($searchQuery){ echo s($searchQuery); } ?>" /></div></form>
-<?php if($preBody){ echo "\t\t\t" . ($preBody ?? '') . "\n"; } ?>
+<?php if($preBody ?? null){ echo "\t\t\t" . $preBody . "\n"; } ?>
 			<div id="c"><div id="primary">
