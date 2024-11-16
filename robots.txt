@@ -1,0 +1,6 @@
+Disallow: /i.imgur.com/*
+Disallow: /p.twimg.com/*
+Disallow: /pbs.twimg.com/*
+Disallow: /scontent.cdninstagram.com/*
+Disallow: /twitpic.com/*
+Disallow: /yfrog.com/*
