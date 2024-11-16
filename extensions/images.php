@@ -84,7 +84,23 @@
 				$ds    = explode("\n", $d, 2);
 				$imgd  = ""; $i = 1; $is = array();
 				foreach($tweetextra['imgs'] as $link => $img){
-					if(!$https_strict || substr(s($img), 0, 2) == "//" || substr(s($img), 0, 8) == "https://") {
+					// Texttheater archive mod: use self-hosted thumbnail images, link to
+					// self-hosted full size images
+					$local = false;
+					if (str_starts_with($img, 'http://')) {
+						$img = $config['path'] . substr($img, 6);
+						if (str_ends_with($img, ':thumb')) {
+							$link = substr($img, 0, -6);
+						}
+						$local = true;
+					} elseif (str_starts_with($img, 'https://')) {
+						$img = $config['path'] . substr($img, 7);
+						if (str_ends_with($img, ':thumb')) {
+							$link = substr($img, 0, -6);
+						}
+						$local = true;
+					}
+					if($local || !$https_strict || substr(s($img), 0, 2) == "//" || substr(s($img), 0, 8) == "https://") {
 						$imgd .=
 							$x . "\t<a class=\"pic pic-" . s($i) . "\" href=\"" . s($link) . "\">" .
 							"<img src=\"" . s($img) . "\" alt=\"\" /></a>\n";
