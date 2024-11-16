@@ -99,6 +99,12 @@
 							$link = substr($img, 0, -6);
 						}
 						$local = true;
+					} elseif (str_starts_with($img, '//')) {
+						$img = $config['path'] . substr($img, 1);
+						if (str_ends_with($img, ':thumb')) {
+							$link = substr($img, 0, -6);
+						}
+						$local = true;
 					}
 					if($local || !$https_strict || substr(s($img), 0, 2) == "//" || substr(s($img), 0, 8) == "https://") {
 						$imgd .=
