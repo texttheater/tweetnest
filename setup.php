@@ -92,7 +92,7 @@
 	// Get the full path
 	$fPath = explode(DIRECTORY_SEPARATOR, rtrim(__FILE__, DIRECTORY_SEPARATOR));
 	array_pop($fPath); // Remove setup.php
-	$fPath = implode($fPath, "/");
+	$fPath = implode("/", $fPath);
 	
 	// Prerequisites and pre-checks
 	if(!empty($config['twitter_screenname'])){ $e[] = "<strong>Your Tweet Nest has already been set up.</strong> If you wish to change settings, open <code>config.php</code> and change values using a text editor. Alternatively, replace it with the default empty <code>config.php</code> and reload this page."; } // Config already defined!
