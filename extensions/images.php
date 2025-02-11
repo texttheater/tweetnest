@@ -88,19 +88,19 @@
 					// self-hosted full size images
 					$local = false;
 					if (str_starts_with($img, 'http://')) {
-						$img = $config['path'] . substr($img, 6);
+						$img = $config['path'] . '/img' . substr($img, 6);
 						if (str_ends_with($img, ':thumb')) {
 							$link = 'img/' . substr($img, 0, -6);
 						}
 						$local = true;
 					} elseif (str_starts_with($img, 'https://')) {
-						$img = $config['path'] . substr($img, 7);
+						$img = $config['path'] . '/img' . substr($img, 7);
 						if (str_ends_with($img, ':thumb')) {
 							$link = 'img/' . substr($img, 0, -6);
 						}
 						$local = true;
 					} elseif (str_starts_with($img, '//')) {
-						$img = $config['path'] . substr($img, 1);
+						$img = $config['path'] . '/img' . substr($img, 1);
 						if (str_ends_with($img, ':thumb')) {
 							$link = 'img/' . substr($img, 0, -6);
 						}
