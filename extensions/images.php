@@ -90,19 +90,19 @@
 					if (str_starts_with($img, 'http://')) {
 						$img = $config['path'] . substr($img, 6);
 						if (str_ends_with($img, ':thumb')) {
-							$link = substr($img, 0, -6);
+							$link = 'img/' . substr($img, 0, -6);
 						}
 						$local = true;
 					} elseif (str_starts_with($img, 'https://')) {
 						$img = $config['path'] . substr($img, 7);
 						if (str_ends_with($img, ':thumb')) {
-							$link = substr($img, 0, -6);
+							$link = 'img/' . substr($img, 0, -6);
 						}
 						$local = true;
 					} elseif (str_starts_with($img, '//')) {
 						$img = $config['path'] . substr($img, 1);
 						if (str_ends_with($img, ':thumb')) {
-							$link = substr($img, 0, -6);
+							$link = 'img/' . substr($img, 0, -6);
 						}
 						$local = true;
 					}
